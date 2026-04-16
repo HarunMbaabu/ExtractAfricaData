@@ -55,8 +55,7 @@ These reports show accepted vs dropped rows and data quality issues.
 ### **Setup Instructions**
 
 #### **1) Prerequisites**
-- [uv](https://docs.astral.sh/uv/) installed (Python package + project manager)
-- Python 3.10+ available on your system
+- Python 3.10+ recommended
 - PostgreSQL database reachable from your machine
 - Internet access (extractors call external APIs)
 
@@ -66,38 +65,25 @@ git clone <your-repo-url>
 cd ExtractAfricaData
 ```
 
-#### **3) Initialize the project with uv**
-If this repository does not yet have a `pyproject.toml`, initialize one:
+#### **3) Create and activate a virtual environment**
 ```bash
-uv init --name extractafricadata --python 3.11
-```
-
-#### **4) Create a uv-managed virtual environment**
-```bash
-uv venv
+python -m venv .venv
 source .venv/bin/activate
 ```
 
 On Windows (PowerShell):
 ```powershell
-uv venv
+python -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
 
-#### **5) Install dependencies with uv**
-Use the existing `requirements.txt` with uv:
+#### **4) Install dependencies**
 ```bash
-uv pip install -r requirements.txt
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
-Recommended (project-managed) flow:
-```bash
-uv add -r requirements.txt
-uv lock
-uv sync
-```
-
-#### **6) Create database schema (recommended)**
+#### **5) Create database schema (recommended)**
 The loader writes tables to schema `scrapper` in PostgreSQL. Create it once:
 ```sql
 CREATE SCHEMA IF NOT EXISTS scrapper;
@@ -161,7 +147,7 @@ This consistent shape is what makes cross-sector analytics possible.
 
 #### **Run one sector**
 ```bash
-uv run python main.py run-sector --sector energy
+python main.py run-sector --sector energy
 ```
 
 Available sector keys:
@@ -175,7 +161,7 @@ Available sector keys:
 
 #### **Run all sectors**
 ```bash
-uv run python main.py run-all --workers 4
+python main.py run-all --workers 4
 ```
 - `--workers` controls parallelism.
 - If omitted, project defaults to up to 4 workers.
@@ -239,5 +225,5 @@ If you are new to data engineering, think of this project as an assembly line:
 ### **Suggested Next Improvements**
 - Add unit tests for `clean_transform.py` and `validate.py`.
 - Add a `.gitignore` if missing (especially for `.env`, temporary CSVs, and reports).
-- Add a lightweight `Makefile` for common commands (`uv sync`, `run-all`, `run-sector`).
+- Add a lightweight `Makefile` for common commands (`install`, `run-all`, `run-sector`).
 - Add CI to run linting and tests automatically on every commit.
