@@ -1,0 +1,19 @@
+VALIDATION REPORT - [energy]
+============================================================
+PASSED CHECKS:
+- Total records reviewed: 2430
+- Accepted for load (pre-disambiguation): 2430
+- Accepted for load (after id disambiguation): 2430
+- No hierarchy errors in accepted set
+
+FAILED / DROPPED SUMMARY:
+- Dropped documents: 0
+- Missing countries: 0
+
+PER-TAB SUMMARY:
+- unknown: accepted=2430, dropped=0
+
+
+UPSERT SUMMARY (PostgreSQL):
+- Accepted for load (after id disambiguation): 2430
+- PostgreSQL write: upserted/updated=2430

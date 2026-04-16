@@ -1,0 +1,19 @@
+VALIDATION REPORT - [adaptation]
+============================================================
+PASSED CHECKS:
+- Total records reviewed: 1783
+- Accepted for load (pre-disambiguation): 1783
+- Accepted for load (after id disambiguation): 1783
+- No hierarchy errors in accepted set
+
+FAILED / DROPPED SUMMARY:
+- Dropped documents: 0
+- Missing countries: 1 (Djibouti)
+
+PER-TAB SUMMARY:
+- unknown: accepted=1783, dropped=0
+
+
+UPSERT SUMMARY (PostgreSQL):
+- Accepted for load (after id disambiguation): 1783
+- PostgreSQL write: upserted/updated=1783
